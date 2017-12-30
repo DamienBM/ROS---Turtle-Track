@@ -1,0 +1,26 @@
+footprint: [ [0.254, -0.0508], [0.1778, -0.0508], [0.1778, -0.1778], [-0.1905, -0.1778], [-0.254, 0], [-0.1905, 0.1778], [0.1778, 0.1778], [0.1778, 0.0508], [0.254, 0.0508] ]
+
+map_type: voxel
+
+transform_tolerance:  2.0  # Tolerance in the TF delays after which to warn
+
+max_obstacle_height: 0.10
+min_obstacle_height: 0.0
+
+robot_base_frame: /Pioneer_p3dx
+
+obstacle_layer:
+ enabled: true
+ observation_sources: laser_scan_sensor
+
+ laser_scan_sensor: {sensor_frame: fastHokuyo, data_type: LaserScan, topic: /pioneer_p3dx/front_scan    , marking: true, clearing: true}
+
+
+inflation_layer:
+ enabled:              true
+ cost_scaling_factor:  5.0  # exponential rate at which the obstacle cost drops off (default: 10)
+ inflation_radius:     0.4  # max. distance from an obstacle at which costs are incurred for planning paths.
+
+
+static_layer:
+ enabled: true

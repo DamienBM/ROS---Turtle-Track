@@ -1,27 +1,15 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(turtle_bot)
-
-## Compile as C++11, supported in ROS Kinetic and newer
-add_compile_options(-std=c++17)
+project(robotique_autonome_be)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  roscpp
+  gmapping
   rospy
   std_msgs
-  std_srvs
-  geometry_msgs
   tf
-  message_generation
-  image_transport
-  cv_bridge
-  )
-
-#added after ROS update to link OpenCV
-find_package(OpenCV 3.3.1 EXACT REQUIRED)
-
+)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -57,23 +45,18 @@ find_package(OpenCV 3.3.1 EXACT REQUIRED)
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
- add_message_files(
-   FILES
-   ArenaPosition.msg
-   ArenaPositions.msg
-   PanTilt.msg
-   PanTilts.msg
-   Axis.msg
- )
+# add_message_files(
+#   FILES
+#   Message1.msg
+#   Message2.msg
+# )
 
 ## Generate services in the 'srv' folder
-add_service_files(
-   FILES
-   Service1.srv
-   Go.srv
-   Abort.srv
-   Mode.srv
-)
+# add_service_files(
+#   FILES
+#   Service1.srv
+#   Service2.srv
+# )
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -83,13 +66,10 @@ add_service_files(
 # )
 
 ## Generate added messages and services with any dependencies listed here
-generate_messages(
-   DEPENDENCIES
-   std_msgs
-   geometry_msgs
-   std_srvs
-   turtle_bot
-   )
+# generate_messages(
+#   DEPENDENCIES
+#   std_msgs
+# )
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -116,16 +96,16 @@ generate_messages(
 ###################################
 ## The catkin_package macro generates cmake config files for your package
 ## Declare things to be passed to dependent projects
-## INCLUDE_DIRS: uncomment this if your package contains header files
+## INCLUDE_DIRS: uncomment this if you package contains header files
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES turtle_bot
-  CATKIN_DEPENDS roscpp rospy std_msgs message_runtime image_transport cv_bridge
+#  LIBRARIES robotique_autonome_be
+#  CATKIN_DEPENDS gmapping rospy std_msgs tf
 #  DEPENDS system_lib
-  )
+)
 
 ###########
 ## Build ##
@@ -133,67 +113,39 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
+# include_directories(include)
 include_directories(
-# include
-${catkin_INCLUDE_DIRS}
-${OpenCV_INCLUDE_DIRS}
+  ${catkin_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
-# add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/turtle_bot.cpp
+# add_library(robotique_autonome_be
+#   src/${PROJECT_NAME}/robotique_autonome_be.cpp
 # )
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
-# add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(robotique_autonome_be ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-## With catkin_make all packages are built within a single CMake context
-## The recommended prefix ensures that target names across packages don't collide
-add_executable(nav_to_goal src/nav_to_goal.cpp)
-add_executable(nav_points src/nav_points.cpp)
-add_executable(move_axis src/move_axis.cpp)
-add_executable(detect src/detect.cpp)
-add_executable(tracker src/tracker.cpp)
-
-## Rename C++ executable without prefix
-## The above recommended prefix causes long target names, the following renames the
-## target back to the shorter version for ease of user use
-## e.g. "rosrun someones_pkg node" instead of "rosrun someones_pkg someones_pkg_node"
-# set_target_properties(${PROJECT_NAME}_node PROPERTIES OUTPUT_NAME node PREFIX "")
+# add_executable(robotique_autonome_be_node src/robotique_autonome_be_node.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-# add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(robotique_autonome_be_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(nav_to_goal
-  ${catkin_LIBRARIES}
-  )
-
-target_link_libraries(nav_points
-  ${catkin_LIBRARIES}
-  )
-
-target_link_libraries(move_axis
-  ${catkin_LIBRARIES}
-  )
-
-target_link_libraries(detect
-  ${catkin_LIBRARIES}
-  ${OpenCV_LIBRARIES}
-  )
-
-target_link_libraries(tracker
-  ${catkin_LIBRARIES}
-  ${OpenCV_LIBRARIES}
-  )
+# target_link_libraries(robotique_autonome_be_node
+#   ${catkin_LIBRARIES}
+# )
 
 #############
 ## Install ##
 #############
+
+catkin_install_python(PROGRAMS nodes/pioneer_driver.py
+                      DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
 # all install targets should use catkin DESTINATION variables
 # See http://ros.org/doc/api/catkin/html/adv_user_guide/variables.html
@@ -206,7 +158,7 @@ target_link_libraries(tracker
 # )
 
 ## Mark executables and/or libraries for installation
-# install(TARGETS ${PROJECT_NAME} ${PROJECT_NAME}_node
+# install(TARGETS robotique_autonome_be robotique_autonome_be_node
 #   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
@@ -231,7 +183,7 @@ target_link_libraries(tracker
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_turtle_bot.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_robotique_autonome_be.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

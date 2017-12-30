@@ -1,27 +1,16 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(turtle_bot)
+project(be_robot)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-add_compile_options(-std=c++17)
+# add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  roscpp
   rospy
   std_msgs
-  std_srvs
-  geometry_msgs
-  tf
-  message_generation
-  image_transport
-  cv_bridge
-  )
-
-#added after ROS update to link OpenCV
-find_package(OpenCV 3.3.1 EXACT REQUIRED)
-
+)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -57,23 +46,18 @@ find_package(OpenCV 3.3.1 EXACT REQUIRED)
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
- add_message_files(
-   FILES
-   ArenaPosition.msg
-   ArenaPositions.msg
-   PanTilt.msg
-   PanTilts.msg
-   Axis.msg
- )
+# add_message_files(
+#   FILES
+#   Message1.msg
+#   Message2.msg
+# )
 
 ## Generate services in the 'srv' folder
-add_service_files(
-   FILES
-   Service1.srv
-   Go.srv
-   Abort.srv
-   Mode.srv
-)
+# add_service_files(
+#   FILES
+#   Service1.srv
+#   Service2.srv
+# )
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -83,13 +67,10 @@ add_service_files(
 # )
 
 ## Generate added messages and services with any dependencies listed here
-generate_messages(
-   DEPENDENCIES
-   std_msgs
-   geometry_msgs
-   std_srvs
-   turtle_bot
-   )
+# generate_messages(
+#   DEPENDENCIES
+#   std_msgs
+# )
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -122,10 +103,10 @@ generate_messages(
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES turtle_bot
-  CATKIN_DEPENDS roscpp rospy std_msgs message_runtime image_transport cv_bridge
+#  LIBRARIES be_robot
+#  CATKIN_DEPENDS rospy std_msgs
 #  DEPENDS system_lib
-  )
+)
 
 ###########
 ## Build ##
@@ -135,13 +116,12 @@ catkin_package(
 ## Your package locations should be listed before other locations
 include_directories(
 # include
-${catkin_INCLUDE_DIRS}
-${OpenCV_INCLUDE_DIRS}
+  ${catkin_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/turtle_bot.cpp
+#   src/${PROJECT_NAME}/be_robot.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -152,11 +132,7 @@ ${OpenCV_INCLUDE_DIRS}
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(nav_to_goal src/nav_to_goal.cpp)
-add_executable(nav_points src/nav_points.cpp)
-add_executable(move_axis src/move_axis.cpp)
-add_executable(detect src/detect.cpp)
-add_executable(tracker src/tracker.cpp)
+# add_executable(${PROJECT_NAME}_node src/be_robot_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -169,27 +145,9 @@ add_executable(tracker src/tracker.cpp)
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(nav_to_goal
-  ${catkin_LIBRARIES}
-  )
-
-target_link_libraries(nav_points
-  ${catkin_LIBRARIES}
-  )
-
-target_link_libraries(move_axis
-  ${catkin_LIBRARIES}
-  )
-
-target_link_libraries(detect
-  ${catkin_LIBRARIES}
-  ${OpenCV_LIBRARIES}
-  )
-
-target_link_libraries(tracker
-  ${catkin_LIBRARIES}
-  ${OpenCV_LIBRARIES}
-  )
+# target_link_libraries(${PROJECT_NAME}_node
+#   ${catkin_LIBRARIES}
+# )
 
 #############
 ## Install ##
@@ -231,7 +189,7 @@ target_link_libraries(tracker
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_turtle_bot.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_be_robot.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

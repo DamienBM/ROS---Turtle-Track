@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(turtle_bot)
+project(beginner_tutorials)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-add_compile_options(-std=c++17)
+# add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -11,17 +11,8 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
-  std_srvs
-  geometry_msgs
-  tf
   message_generation
-  image_transport
-  cv_bridge
-  )
-
-#added after ROS update to link OpenCV
-find_package(OpenCV 3.3.1 EXACT REQUIRED)
-
+)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -56,24 +47,17 @@ find_package(OpenCV 3.3.1 EXACT REQUIRED)
 ##   * uncomment the generate_messages entry below
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
-## Generate messages in the 'msg' folder
+# Generate messages in the 'msg' folder
  add_message_files(
    FILES
-   ArenaPosition.msg
-   ArenaPositions.msg
-   PanTilt.msg
-   PanTilts.msg
-   Axis.msg
+   Num.msg
  )
 
-## Generate services in the 'srv' folder
-add_service_files(
+  ## Generate services in the 'srv' folder
+ add_service_files(
    FILES
-   Service1.srv
-   Go.srv
-   Abort.srv
-   Mode.srv
-)
+   AddTwoInts.srv
+ )
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -83,13 +67,10 @@ add_service_files(
 # )
 
 ## Generate added messages and services with any dependencies listed here
-generate_messages(
+ generate_messages(
    DEPENDENCIES
    std_msgs
-   geometry_msgs
-   std_srvs
-   turtle_bot
-   )
+ )
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -116,16 +97,17 @@ generate_messages(
 ###################################
 ## The catkin_package macro generates cmake config files for your package
 ## Declare things to be passed to dependent projects
-## INCLUDE_DIRS: uncomment this if your package contains header files
+## INCLUDE_DIRS: uncomment this if you package contains header files
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES turtle_bot
-  CATKIN_DEPENDS roscpp rospy std_msgs message_runtime image_transport cv_bridge
+#  LIBRARIES beginner_tutorials
+#  CATKIN_DEPENDS roscpp rospy std_msgs
 #  DEPENDS system_lib
-  )
+  CATKIN_DEPENDS message_runtime
+)
 
 ###########
 ## Build ##
@@ -135,13 +117,12 @@ catkin_package(
 ## Your package locations should be listed before other locations
 include_directories(
 # include
-${catkin_INCLUDE_DIRS}
-${OpenCV_INCLUDE_DIRS}
+  ${catkin_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/turtle_bot.cpp
+#   src/${PROJECT_NAME}/beginner_tutorials.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -152,11 +133,7 @@ ${OpenCV_INCLUDE_DIRS}
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(nav_to_goal src/nav_to_goal.cpp)
-add_executable(nav_points src/nav_points.cpp)
-add_executable(move_axis src/move_axis.cpp)
-add_executable(detect src/detect.cpp)
-add_executable(tracker src/tracker.cpp)
+# add_executable(${PROJECT_NAME}_node src/beginner_tutorials_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -169,27 +146,26 @@ add_executable(tracker src/tracker.cpp)
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(nav_to_goal
-  ${catkin_LIBRARIES}
-  )
+# target_link_libraries(${PROJECT_NAME}_node
+#   ${catkin_LIBRARIES}
+# )
 
-target_link_libraries(nav_points
-  ${catkin_LIBRARIES}
-  )
+add_executable(talker src/talker.cpp)
+target_link_libraries(talker ${catkin_LIBRARIES})
+add_dependencies(talker beginner_tutorials_generate_messages_cpp)
 
-target_link_libraries(move_axis
-  ${catkin_LIBRARIES}
-  )
+add_executable(listener src/listener.cpp)
+target_link_libraries(listener ${catkin_LIBRARIES})
+add_dependencies(listener beginner_tutorials_generate_messages_cpp)
 
-target_link_libraries(detect
-  ${catkin_LIBRARIES}
-  ${OpenCV_LIBRARIES}
-  )
+add_executable(add_two_ints_server src/add_two_ints_server.cpp)
+target_link_libraries(add_two_ints_server ${catkin_LIBRARIES})
+add_dependencies(add_two_ints_server beginner_tutorials_gencpp)
 
-target_link_libraries(tracker
-  ${catkin_LIBRARIES}
-  ${OpenCV_LIBRARIES}
-  )
+add_executable(add_two_ints_client src/add_two_ints_client.cpp)
+target_link_libraries(add_two_ints_client ${catkin_LIBRARIES})
+add_dependencies(add_two_ints_client beginner_tutorials_gencpp)
+
 
 #############
 ## Install ##
@@ -231,7 +207,7 @@ target_link_libraries(tracker
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_turtle_bot.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_beginner_tutorials.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
