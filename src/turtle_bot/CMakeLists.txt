@@ -73,7 +73,8 @@ add_service_files(
    Go.srv
    Abort.srv
    Mode.srv
-)
+   Record.srv
+   )
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -83,13 +84,13 @@ add_service_files(
 # )
 
 ## Generate added messages and services with any dependencies listed here
-generate_messages(
+ generate_messages(
    DEPENDENCIES
    std_msgs
    geometry_msgs
    std_srvs
    turtle_bot
-   )
+ )
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -125,7 +126,7 @@ catkin_package(
 #  LIBRARIES turtle_bot
   CATKIN_DEPENDS roscpp rospy std_msgs message_runtime image_transport cv_bridge
 #  DEPENDS system_lib
-  )
+)
 
 ###########
 ## Build ##
@@ -157,6 +158,7 @@ add_executable(nav_points src/nav_points.cpp)
 add_executable(move_axis src/move_axis.cpp)
 add_executable(detect src/detect.cpp)
 add_executable(tracker src/tracker.cpp)
+add_executable(sampler src/sampler.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -188,9 +190,12 @@ target_link_libraries(detect
 
 target_link_libraries(tracker
   ${catkin_LIBRARIES}
-  ${OpenCV_LIBRARIES}
+  )
+target_link_libraries(sampler
+  ${catkin_LIBRARIES}
   )
 
+  
 #############
 ## Install ##
 #############

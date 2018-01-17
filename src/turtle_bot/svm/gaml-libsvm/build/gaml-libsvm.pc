@@ -1,0 +1,7 @@
+
+Name: gaml-libsvm
+Description: This binds libsvm to gaml
+Version: 1.05
+Requires: gaml
+Libs: -L/usr/local/lib -lsvm -lm -Wl,--no-as-needed 
+Cflags: -I/usr/local/include/gaml-libsvm -Wall -std=c++11

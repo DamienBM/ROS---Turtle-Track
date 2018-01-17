@@ -15,7 +15,7 @@
 #include <turtle_bot/Axis.h>
 
 int hsv_min_couleur=128;
-int hsv_max_couleur=142;
+int hsv_max_couleur=159;
 int hsv_min_saturation=87;
 int hsv_max_saturation=256;
 int hsv_min_luminosite=147;
@@ -23,6 +23,8 @@ int hsv_max_luminosite=256;
 turtle_bot::Axis theCurrState;
 turtle_bot::Axis theDesireState;
 bool isMoving = false;
+
+
 
 using namespace cv; 
 
@@ -136,7 +138,7 @@ void image_callback(const sensor_msgs::ImageConstPtr& theImage, ros::Publisher &
 
   //(#5)
 
-  turtle_bot::Axis thePan(theCurrState);
+  /*turtle_bot::Axis thePan(theCurrState);
   std::pair<double, double> thePair;
   try{
   thePair = pantiltzoom(center[0].x, center[0].y,
@@ -150,21 +152,26 @@ void image_callback(const sensor_msgs::ImageConstPtr& theImage, ros::Publisher &
   //cv::waitKey(0);
   pub2.publish(thePan);
   isMoving = true;
-  theDesireState = thePan;
+  theDesireState = thePan;*/
+  
   //(#6)
   
   turtle_bot::PanTilts visible_bot;
   std::pair<double, double> tempPair;
   turtle_bot::PanTilt test;
+  //visible_bot.pts.reserve( center.size() );
   for (auto i = 0; i < center.size(); ++i){
    tempPair = pantiltzoom(center[i].x, center[i].y,drawing.size().width / 2.0, drawing.size().height / 2.0,
 			  (double) theCurrState.pan, (double) theCurrState.tilt, (double) theCurrState.zoom);
    test.pan = tempPair.first;
    test.tilt = tempPair.second;
    visible_bot.pts.push_back(test);
+  
   }
+
    pub.publish(visible_bot);
-}//fin callback
+  
+}
 
 
 void callback(int a, void*){}

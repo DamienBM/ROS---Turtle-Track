@@ -1,0 +1,73 @@
+#include <ros/ros.h>
+#include <turtle_bot/PanTilts.h>
+#include <iostream>
+#include <vector>
+#include <cmath>
+#include <utility>
+#include <turtle_bot/Axis.h>
+#include <turtle_bot/Mode.h>
+
+
+turtle_bot::Axis theCurrState;
+turtle_bot::Axis theDesireState;
+bool isMoving = false;
+string chosenMode="search";
+
+
+bool mode_callback(turtle_bot::Mode::Request& request, turtle_bot::Mode::Response& response){
+  chosenMode = request;
+  return true;
+}
+
+void theModeCallback(turtle_bot::PanTilts tbList, ros::Publisher & pub){
+
+
+  switch (chosenMode)
+    {
+    case "search": 
+      if !tbList.isEMpty(){
+	  chosenMode = "track";
+	}
+      break;
+    
+    case "scan":
+      
+
+      break;
+
+    case "track":
+      
+      break;
+
+    default:
+      chosenMode = "search";
+      
+
+
+}
+
+
+void theStateCallback(const turtle_bot::Axis & theState){
+  if (((theDesireState.pan - theState.pan)*(theDesireState.pan - theState.pan)<100) && ((theDesireState.tilt - theState.tilt)*(theDesireState.tilt - theState.tilt)<100)){
+    isMoving = false;
+    //cv::waitKey(200);
+  }
+  theCurrState  = theState;
+}
+
+int main(int argc, char * argv[]) {
+  ros::init(argc, argv, "tracker");
+  
+  ros::NodeHandle nh;
+
+  ros::ServiceServer ServiceMode = nh.advertiseService<turtle_bot::Mode::Request,turtle_bot::Mode::Response>("Mode_service", mode_callback);
+
+  ros::Subscriber currentState = nh.subscribe("/state", 1, theStateCallback);
+
+  ros::Publisher pub = nh.advertise<turtle_bot::PanTilts>("/cmd", 1);
+  
+  ros::Subscriber visible_bot = nh.subscribe("/visible_bot", 1, std::bind(&theModeCallback,std::placeholders::_1,std::ref(pub)));
+
+ 
+
+}
