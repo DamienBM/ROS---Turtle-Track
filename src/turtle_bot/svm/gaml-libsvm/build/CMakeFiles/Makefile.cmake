@@ -129,9 +129,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/dist.dir/DependInfo.cmake"
   "CMakeFiles/packages.dir/DependInfo.cmake"
-  "examples/CMakeFiles/example-004-grid-search.dir/DependInfo.cmake"
-  "examples/CMakeFiles/example-002-unsupervized.dir/DependInfo.cmake"
-  "examples/CMakeFiles/example-003-3D.dir/DependInfo.cmake"
-  "examples/CMakeFiles/example-001-basics.dir/DependInfo.cmake"
+  "examples/CMakeFiles/svm.dir/DependInfo.cmake"
   "doc/CMakeFiles/apidoc.dir/DependInfo.cmake"
   )

@@ -67,17 +67,6 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: install/local
-
-.PHONY : install/local/fast
-
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
@@ -99,6 +88,27 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target package
+package: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
+	cd /usr/users/promo2018/billotmornet_dam/Documents/SIR/ros/ros-ws/src/turtle_bot/svm/gaml-libsvm/build && /usr/bin/cpack --config ./CPackConfig.cmake
+.PHONY : package
+
+# Special rule for the target package
+package/fast: package
+
+.PHONY : package/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"binary\" \"devel\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
 
 # Special rule for the target install
 install: preinstall
@@ -123,26 +133,16 @@ install/strip/fast: install/strip
 
 .PHONY : install/strip/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"binary\" \"devel\""
-.PHONY : list_install_components
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
 
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
+# Special rule for the target install/local
+install/local/fast: install/local
 
-.PHONY : list_install_components/fast
-
-# Special rule for the target package
-package: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
-	cd /usr/users/promo2018/billotmornet_dam/Documents/SIR/ros/ros-ws/src/turtle_bot/svm/gaml-libsvm/build && /usr/bin/cpack --config ./CPackConfig.cmake
-.PHONY : package
-
-# Special rule for the target package
-package/fast: package
-
-.PHONY : package/fast
+.PHONY : install/local/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -177,172 +177,46 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-examples/CMakeFiles/example-004-grid-search.dir/rule:
-	cd /usr/users/promo2018/billotmornet_dam/Documents/SIR/ros/ros-ws/src/turtle_bot/svm/gaml-libsvm/build && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/example-004-grid-search.dir/rule
-.PHONY : examples/CMakeFiles/example-004-grid-search.dir/rule
+examples/CMakeFiles/svm.dir/rule:
+	cd /usr/users/promo2018/billotmornet_dam/Documents/SIR/ros/ros-ws/src/turtle_bot/svm/gaml-libsvm/build && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/svm.dir/rule
+.PHONY : examples/CMakeFiles/svm.dir/rule
 
 # Convenience name for target.
-example-004-grid-search: examples/CMakeFiles/example-004-grid-search.dir/rule
+svm: examples/CMakeFiles/svm.dir/rule
 
-.PHONY : example-004-grid-search
+.PHONY : svm
 
 # fast build rule for target.
-example-004-grid-search/fast:
-	cd /usr/users/promo2018/billotmornet_dam/Documents/SIR/ros/ros-ws/src/turtle_bot/svm/gaml-libsvm/build && $(MAKE) -f examples/CMakeFiles/example-004-grid-search.dir/build.make examples/CMakeFiles/example-004-grid-search.dir/build
-.PHONY : example-004-grid-search/fast
+svm/fast:
+	cd /usr/users/promo2018/billotmornet_dam/Documents/SIR/ros/ros-ws/src/turtle_bot/svm/gaml-libsvm/build && $(MAKE) -f examples/CMakeFiles/svm.dir/build.make examples/CMakeFiles/svm.dir/build
+.PHONY : svm/fast
 
-# Convenience name for target.
-examples/CMakeFiles/example-002-unsupervized.dir/rule:
-	cd /usr/users/promo2018/billotmornet_dam/Documents/SIR/ros/ros-ws/src/turtle_bot/svm/gaml-libsvm/build && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/example-002-unsupervized.dir/rule
-.PHONY : examples/CMakeFiles/example-002-unsupervized.dir/rule
+svm.o: svm.cpp.o
 
-# Convenience name for target.
-example-002-unsupervized: examples/CMakeFiles/example-002-unsupervized.dir/rule
-
-.PHONY : example-002-unsupervized
-
-# fast build rule for target.
-example-002-unsupervized/fast:
-	cd /usr/users/promo2018/billotmornet_dam/Documents/SIR/ros/ros-ws/src/turtle_bot/svm/gaml-libsvm/build && $(MAKE) -f examples/CMakeFiles/example-002-unsupervized.dir/build.make examples/CMakeFiles/example-002-unsupervized.dir/build
-.PHONY : example-002-unsupervized/fast
-
-# Convenience name for target.
-examples/CMakeFiles/example-003-3D.dir/rule:
-	cd /usr/users/promo2018/billotmornet_dam/Documents/SIR/ros/ros-ws/src/turtle_bot/svm/gaml-libsvm/build && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/example-003-3D.dir/rule
-.PHONY : examples/CMakeFiles/example-003-3D.dir/rule
-
-# Convenience name for target.
-example-003-3D: examples/CMakeFiles/example-003-3D.dir/rule
-
-.PHONY : example-003-3D
-
-# fast build rule for target.
-example-003-3D/fast:
-	cd /usr/users/promo2018/billotmornet_dam/Documents/SIR/ros/ros-ws/src/turtle_bot/svm/gaml-libsvm/build && $(MAKE) -f examples/CMakeFiles/example-003-3D.dir/build.make examples/CMakeFiles/example-003-3D.dir/build
-.PHONY : example-003-3D/fast
-
-# Convenience name for target.
-examples/CMakeFiles/example-001-basics.dir/rule:
-	cd /usr/users/promo2018/billotmornet_dam/Documents/SIR/ros/ros-ws/src/turtle_bot/svm/gaml-libsvm/build && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/example-001-basics.dir/rule
-.PHONY : examples/CMakeFiles/example-001-basics.dir/rule
-
-# Convenience name for target.
-example-001-basics: examples/CMakeFiles/example-001-basics.dir/rule
-
-.PHONY : example-001-basics
-
-# fast build rule for target.
-example-001-basics/fast:
-	cd /usr/users/promo2018/billotmornet_dam/Documents/SIR/ros/ros-ws/src/turtle_bot/svm/gaml-libsvm/build && $(MAKE) -f examples/CMakeFiles/example-001-basics.dir/build.make examples/CMakeFiles/example-001-basics.dir/build
-.PHONY : example-001-basics/fast
-
-example-001-basics.o: example-001-basics.cpp.o
-
-.PHONY : example-001-basics.o
+.PHONY : svm.o
 
 # target to build an object file
-example-001-basics.cpp.o:
-	cd /usr/users/promo2018/billotmornet_dam/Documents/SIR/ros/ros-ws/src/turtle_bot/svm/gaml-libsvm/build && $(MAKE) -f examples/CMakeFiles/example-001-basics.dir/build.make examples/CMakeFiles/example-001-basics.dir/example-001-basics.cpp.o
-.PHONY : example-001-basics.cpp.o
+svm.cpp.o:
+	cd /usr/users/promo2018/billotmornet_dam/Documents/SIR/ros/ros-ws/src/turtle_bot/svm/gaml-libsvm/build && $(MAKE) -f examples/CMakeFiles/svm.dir/build.make examples/CMakeFiles/svm.dir/svm.cpp.o
+.PHONY : svm.cpp.o
 
-example-001-basics.i: example-001-basics.cpp.i
+svm.i: svm.cpp.i
 
-.PHONY : example-001-basics.i
-
-# target to preprocess a source file
-example-001-basics.cpp.i:
-	cd /usr/users/promo2018/billotmornet_dam/Documents/SIR/ros/ros-ws/src/turtle_bot/svm/gaml-libsvm/build && $(MAKE) -f examples/CMakeFiles/example-001-basics.dir/build.make examples/CMakeFiles/example-001-basics.dir/example-001-basics.cpp.i
-.PHONY : example-001-basics.cpp.i
-
-example-001-basics.s: example-001-basics.cpp.s
-
-.PHONY : example-001-basics.s
-
-# target to generate assembly for a file
-example-001-basics.cpp.s:
-	cd /usr/users/promo2018/billotmornet_dam/Documents/SIR/ros/ros-ws/src/turtle_bot/svm/gaml-libsvm/build && $(MAKE) -f examples/CMakeFiles/example-001-basics.dir/build.make examples/CMakeFiles/example-001-basics.dir/example-001-basics.cpp.s
-.PHONY : example-001-basics.cpp.s
-
-example-002-unsupervized.o: example-002-unsupervized.cpp.o
-
-.PHONY : example-002-unsupervized.o
-
-# target to build an object file
-example-002-unsupervized.cpp.o:
-	cd /usr/users/promo2018/billotmornet_dam/Documents/SIR/ros/ros-ws/src/turtle_bot/svm/gaml-libsvm/build && $(MAKE) -f examples/CMakeFiles/example-002-unsupervized.dir/build.make examples/CMakeFiles/example-002-unsupervized.dir/example-002-unsupervized.cpp.o
-.PHONY : example-002-unsupervized.cpp.o
-
-example-002-unsupervized.i: example-002-unsupervized.cpp.i
-
-.PHONY : example-002-unsupervized.i
+.PHONY : svm.i
 
 # target to preprocess a source file
-example-002-unsupervized.cpp.i:
-	cd /usr/users/promo2018/billotmornet_dam/Documents/SIR/ros/ros-ws/src/turtle_bot/svm/gaml-libsvm/build && $(MAKE) -f examples/CMakeFiles/example-002-unsupervized.dir/build.make examples/CMakeFiles/example-002-unsupervized.dir/example-002-unsupervized.cpp.i
-.PHONY : example-002-unsupervized.cpp.i
+svm.cpp.i:
+	cd /usr/users/promo2018/billotmornet_dam/Documents/SIR/ros/ros-ws/src/turtle_bot/svm/gaml-libsvm/build && $(MAKE) -f examples/CMakeFiles/svm.dir/build.make examples/CMakeFiles/svm.dir/svm.cpp.i
+.PHONY : svm.cpp.i
 
-example-002-unsupervized.s: example-002-unsupervized.cpp.s
+svm.s: svm.cpp.s
 
-.PHONY : example-002-unsupervized.s
-
-# target to generate assembly for a file
-example-002-unsupervized.cpp.s:
-	cd /usr/users/promo2018/billotmornet_dam/Documents/SIR/ros/ros-ws/src/turtle_bot/svm/gaml-libsvm/build && $(MAKE) -f examples/CMakeFiles/example-002-unsupervized.dir/build.make examples/CMakeFiles/example-002-unsupervized.dir/example-002-unsupervized.cpp.s
-.PHONY : example-002-unsupervized.cpp.s
-
-example-003-3D.o: example-003-3D.cpp.o
-
-.PHONY : example-003-3D.o
-
-# target to build an object file
-example-003-3D.cpp.o:
-	cd /usr/users/promo2018/billotmornet_dam/Documents/SIR/ros/ros-ws/src/turtle_bot/svm/gaml-libsvm/build && $(MAKE) -f examples/CMakeFiles/example-003-3D.dir/build.make examples/CMakeFiles/example-003-3D.dir/example-003-3D.cpp.o
-.PHONY : example-003-3D.cpp.o
-
-example-003-3D.i: example-003-3D.cpp.i
-
-.PHONY : example-003-3D.i
-
-# target to preprocess a source file
-example-003-3D.cpp.i:
-	cd /usr/users/promo2018/billotmornet_dam/Documents/SIR/ros/ros-ws/src/turtle_bot/svm/gaml-libsvm/build && $(MAKE) -f examples/CMakeFiles/example-003-3D.dir/build.make examples/CMakeFiles/example-003-3D.dir/example-003-3D.cpp.i
-.PHONY : example-003-3D.cpp.i
-
-example-003-3D.s: example-003-3D.cpp.s
-
-.PHONY : example-003-3D.s
+.PHONY : svm.s
 
 # target to generate assembly for a file
-example-003-3D.cpp.s:
-	cd /usr/users/promo2018/billotmornet_dam/Documents/SIR/ros/ros-ws/src/turtle_bot/svm/gaml-libsvm/build && $(MAKE) -f examples/CMakeFiles/example-003-3D.dir/build.make examples/CMakeFiles/example-003-3D.dir/example-003-3D.cpp.s
-.PHONY : example-003-3D.cpp.s
-
-example-004-grid-search.o: example-004-grid-search.cpp.o
-
-.PHONY : example-004-grid-search.o
-
-# target to build an object file
-example-004-grid-search.cpp.o:
-	cd /usr/users/promo2018/billotmornet_dam/Documents/SIR/ros/ros-ws/src/turtle_bot/svm/gaml-libsvm/build && $(MAKE) -f examples/CMakeFiles/example-004-grid-search.dir/build.make examples/CMakeFiles/example-004-grid-search.dir/example-004-grid-search.cpp.o
-.PHONY : example-004-grid-search.cpp.o
-
-example-004-grid-search.i: example-004-grid-search.cpp.i
-
-.PHONY : example-004-grid-search.i
-
-# target to preprocess a source file
-example-004-grid-search.cpp.i:
-	cd /usr/users/promo2018/billotmornet_dam/Documents/SIR/ros/ros-ws/src/turtle_bot/svm/gaml-libsvm/build && $(MAKE) -f examples/CMakeFiles/example-004-grid-search.dir/build.make examples/CMakeFiles/example-004-grid-search.dir/example-004-grid-search.cpp.i
-.PHONY : example-004-grid-search.cpp.i
-
-example-004-grid-search.s: example-004-grid-search.cpp.s
-
-.PHONY : example-004-grid-search.s
-
-# target to generate assembly for a file
-example-004-grid-search.cpp.s:
-	cd /usr/users/promo2018/billotmornet_dam/Documents/SIR/ros/ros-ws/src/turtle_bot/svm/gaml-libsvm/build && $(MAKE) -f examples/CMakeFiles/example-004-grid-search.dir/build.make examples/CMakeFiles/example-004-grid-search.dir/example-004-grid-search.cpp.s
-.PHONY : example-004-grid-search.cpp.s
+svm.cpp.s:
+	cd /usr/users/promo2018/billotmornet_dam/Documents/SIR/ros/ros-ws/src/turtle_bot/svm/gaml-libsvm/build && $(MAKE) -f examples/CMakeFiles/svm.dir/build.make examples/CMakeFiles/svm.dir/svm.cpp.s
+.PHONY : svm.cpp.s
 
 # Help Target
 help:
@@ -351,29 +225,17 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... example-004-grid-search"
-	@echo "... example-002-unsupervized"
-	@echo "... example-003-3D"
-	@echo "... install/local"
 	@echo "... package_source"
-	@echo "... example-001-basics"
 	@echo "... rebuild_cache"
+	@echo "... package"
+	@echo "... svm"
+	@echo "... list_install_components"
 	@echo "... install"
 	@echo "... install/strip"
-	@echo "... list_install_components"
-	@echo "... package"
-	@echo "... example-001-basics.o"
-	@echo "... example-001-basics.i"
-	@echo "... example-001-basics.s"
-	@echo "... example-002-unsupervized.o"
-	@echo "... example-002-unsupervized.i"
-	@echo "... example-002-unsupervized.s"
-	@echo "... example-003-3D.o"
-	@echo "... example-003-3D.i"
-	@echo "... example-003-3D.s"
-	@echo "... example-004-grid-search.o"
-	@echo "... example-004-grid-search.i"
-	@echo "... example-004-grid-search.s"
+	@echo "... install/local"
+	@echo "... svm.o"
+	@echo "... svm.i"
+	@echo "... svm.s"
 .PHONY : help
 
 

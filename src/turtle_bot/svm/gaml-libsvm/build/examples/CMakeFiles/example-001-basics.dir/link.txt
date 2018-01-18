@@ -1,1 +1,0 @@
-/usr/bin/c++   -O3 -DNDEBUG  -Wl,--no-as-needed  -lsvm -lm -L/usr/users/promo2018/billotmornet_dam/Documents/SIR/ros/ros-ws/src/turtle_bot/svm/gaml-libsvm/build/src -Wl,--no-as-needed CMakeFiles/example-001-basics.dir/example-001-basics.cpp.o  -o example-001-basics -rdynamic 

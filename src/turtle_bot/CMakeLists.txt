@@ -22,6 +22,8 @@ find_package(catkin REQUIRED COMPONENTS
 #added after ROS update to link OpenCV
 find_package(OpenCV 3.3.1 EXACT REQUIRED)
 
+find_package(PkgConfig)
+pkg_check_modules(GAMLLIBSVM gaml-libsvm REQUIRED)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -138,6 +140,7 @@ include_directories(
 # include
 ${catkin_INCLUDE_DIRS}
 ${OpenCV_INCLUDE_DIRS}
+${gaml_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -159,6 +162,7 @@ add_executable(move_axis src/move_axis.cpp)
 add_executable(detect src/detect.cpp)
 add_executable(tracker src/tracker.cpp)
 add_executable(sampler src/sampler.cpp)
+add_executable(localize src/localize.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -191,8 +195,17 @@ target_link_libraries(detect
 target_link_libraries(tracker
   ${catkin_LIBRARIES}
   )
+
 target_link_libraries(sampler
   ${catkin_LIBRARIES}
+  )
+
+
+
+target_compile_options(localize PUBLIC ${GAMLLIBSVM_CFLAGS_OTHER})
+target_include_directories(localize PUBLIC ${GAMLLIBSVM_INCLUDE_DIRS})
+target_link_libraries(localize
+  ${catkin_LIBRARIES} ${GAMLLIBSVM_LIBRARIES}
   )
 
   

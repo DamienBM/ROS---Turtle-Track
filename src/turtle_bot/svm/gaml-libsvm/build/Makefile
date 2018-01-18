@@ -203,56 +203,17 @@ packages/fast:
 .PHONY : packages/fast
 
 #=============================================================================
-# Target rules for targets named example-004-grid-search
+# Target rules for targets named svm
 
 # Build rule for target.
-example-004-grid-search: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 example-004-grid-search
-.PHONY : example-004-grid-search
+svm: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 svm
+.PHONY : svm
 
 # fast build rule for target.
-example-004-grid-search/fast:
-	$(MAKE) -f examples/CMakeFiles/example-004-grid-search.dir/build.make examples/CMakeFiles/example-004-grid-search.dir/build
-.PHONY : example-004-grid-search/fast
-
-#=============================================================================
-# Target rules for targets named example-002-unsupervized
-
-# Build rule for target.
-example-002-unsupervized: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 example-002-unsupervized
-.PHONY : example-002-unsupervized
-
-# fast build rule for target.
-example-002-unsupervized/fast:
-	$(MAKE) -f examples/CMakeFiles/example-002-unsupervized.dir/build.make examples/CMakeFiles/example-002-unsupervized.dir/build
-.PHONY : example-002-unsupervized/fast
-
-#=============================================================================
-# Target rules for targets named example-003-3D
-
-# Build rule for target.
-example-003-3D: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 example-003-3D
-.PHONY : example-003-3D
-
-# fast build rule for target.
-example-003-3D/fast:
-	$(MAKE) -f examples/CMakeFiles/example-003-3D.dir/build.make examples/CMakeFiles/example-003-3D.dir/build
-.PHONY : example-003-3D/fast
-
-#=============================================================================
-# Target rules for targets named example-001-basics
-
-# Build rule for target.
-example-001-basics: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 example-001-basics
-.PHONY : example-001-basics
-
-# fast build rule for target.
-example-001-basics/fast:
-	$(MAKE) -f examples/CMakeFiles/example-001-basics.dir/build.make examples/CMakeFiles/example-001-basics.dir/build
-.PHONY : example-001-basics/fast
+svm/fast:
+	$(MAKE) -f examples/CMakeFiles/svm.dir/build.make examples/CMakeFiles/svm.dir/build
+.PHONY : svm/fast
 
 #=============================================================================
 # Target rules for targets named apidoc
@@ -283,10 +244,7 @@ help:
 	@echo "... packages"
 	@echo "... install/local"
 	@echo "... install/strip"
-	@echo "... example-004-grid-search"
-	@echo "... example-002-unsupervized"
-	@echo "... example-003-3D"
-	@echo "... example-001-basics"
+	@echo "... svm"
 	@echo "... apidoc"
 .PHONY : help
 

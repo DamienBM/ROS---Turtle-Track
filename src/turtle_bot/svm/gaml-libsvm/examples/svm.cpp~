@@ -2,6 +2,7 @@
 #include <gaml-libsvm.hpp>
 #include <cmath>
 #include <cstdlib>
+#include <cstring>
 #include <vector>
 #include <utility>
 #include <string>
@@ -86,10 +87,13 @@ int main(int argc, char* argv[]) {
     XY panTiltTemp;
     Z x;
     Z y;
+    Data dataTempX;
+    Data dataTempY;    
     std::ifstream fileIn(argv[1]); //use an absolute path
     std::string line;
-    while getLine(fileIn, line){
-	char * temp;
+    
+    while (std::getline(fileIn, line)){
+	char* temp;
 	temp =  strtok((char*)line.c_str()," ");
 	panTiltTemp.first = std::stof(temp);
 	temp =  strtok(NULL," ");
@@ -98,8 +102,14 @@ int main(int argc, char* argv[]) {
 	x = std::stof(temp);
 	temp =  strtok(NULL," ");
 	y = std::stof(temp);
+
+	dataTempX.first = panTiltTemp;
+	dataTempX.second = x;
+	basisX.push_back(dataTempX);
 	
-    
+	dataTempY.first = panTiltTemp;
+	dataTempY.second = y;
+	basisY.push_back(dataTempY);
     }
 
     // Let us set configure a svm
@@ -111,54 +121,61 @@ int main(int argc, char* argv[]) {
     params.svm_type    = EPSILON_SVR;
     params.p           = .05;          // epsilon
     params.C           = 10;
-    params.eps         = 1e-5;         // numerical tolerence
+    params.eps         = 1e-3;         // numerical tolerence
 
     // This sets up a svm learning algorithm.
     auto learner = gaml::libsvm::supervized::learner<XY,Z>(params, nb_nodes_of, fill_nodes);
 
     // Let us train it and get some predictor f. f is a function, as the oracle.
     std::cout << "Learning..." << std::endl;
-    auto f = learner(basis.begin(),basis.end(),input_of,output_of);
+    auto fX = learner(basisX.begin(),basisX.end(),input_of,output_of);
+    auto fY = learner(basisY.begin(),basisY.end(),input_of,output_of);
 
     // Let us plot the result.
-    gnuplot("clean-oracle.plot","Clean oracle",CleanOracle);
-    gnuplot("oracle.plot","Oracle",Oracle);
-    gnuplot("prediction.plot","SVM prediction",f);
+    gnuplot("prediction.plot","SVM prediction",fX);
+    gnuplot("prediction.plot","SVM prediction",fY);
 
     // All libsvm functions related to svm models are implemented.
     std::cout << std::endl
-    	      << "There are " << f.get_nr_sv() << " support vectors." << std::endl;
+    	      << "There are " << fX.get_nr_sv() << " support vectors for SVM-X and "<<fX.get_nr_sv()<<" for SVM-Y."  << std::endl;
 
     // We can compute the empirical risk with gaml tools.
     auto evaluator = gaml::risk::empirical(gaml::loss::Quadratic<double>());
-    double risk    = evaluator(f, basis.begin(), basis.end(), input_of, output_of);
+    double riskX    = evaluator(fX, basisX.begin(), basisX.end(), input_of, output_of);
+    double riskY    = evaluator(fY, basisY.begin(), basisY.end(), input_of, output_of);
 
-    std::cout << "Empirical quadratic risk : " << risk << std::endl
-    	      << "               i.e error : " << sqrt(risk) << std::endl;
+    std::cout << "Empirical quadratic risk for X: " << riskX << std::endl
+    	      << "               i.e error : " << sqrt(riskX) << std::endl
+	      << "Empirical quadratic risk for Y: " << riskY << std::endl
+    	      << "               i.e error : " << sqrt(riskY) << std::endl;
     
     // Let us use a cross-validation procedure
     auto kfold_evaluator = gaml::risk::cross_validation(gaml::loss::Quadratic<double>(),
 							gaml::partition::kfold(10), true);
-    risk                 = kfold_evaluator(learner, basis.begin(), basis.end(), input_of, output_of);
+    riskX                 = kfold_evaluator(learner, basisX.begin(), basisX.end(), input_of, output_of);
+    riskY                 = kfold_evaluator(learner, basisY.begin(), basisY.end(), input_of, output_of);
 
-    std::cout << "Real quadratic risk estimation : " << risk << std::endl
-    	      << "                     i.e error : " << sqrt(risk) << std::endl
-    	      << "      noise standard deviation : " << sqrt(NOISE_VARIANCE) << std::endl;
+    std::cout << "Real quadratic risk X estimation : " << riskX << std::endl
+    	      << "                     i.e error : " << sqrt(riskX) << std::endl
+	      << "Real quadratic risk Y estimation : " << riskY << std::endl
+    	      << "                     i.e error : " << sqrt(riskY) << std::endl;
 
 
     // Now, let us save our predictor.
-    f.save_model("f.pred");
+    fX.save_model("fX.pred");
+    fY.save_model("fY.pred");
 
     // We can load it and use it on another databasis. The newly
     // created predictor (from scratch) predictor must be provided
     // with the required conversion functions.
-    gaml::libsvm::Predictor<XY,Z> g(nb_nodes_of, fill_nodes);
-    g.load_model("f.pred");
+    
+    gaml::libsvm::Predictor<XY,Z> gX(nb_nodes_of, fill_nodes);
+    gX.load_model("fX.pred");
 
-    risk = evaluator(g, basis.begin(), basis.end(), input_of, output_of);
-    std::cout << "Empirical risk (loaded predictor) : " << risk << std::endl
-    	      << "                        i.e error : " << sqrt(risk) << std::endl;
-    gnuplot("prediction-loaded.plot","SVM prediction",g);
+    riskX = evaluator(gX, basisX.begin(), basisX.end(), input_of, output_of);
+    std::cout << "Empirical X risk (loaded predictor) : " << riskX << std::endl
+    	      << "                        i.e error : " << sqrt(riskX) << std::endl;
+    gnuplot("prediction-loadedX.plot","SVM-X  prediction",gX);
   }
   catch(gaml::exception::Any& e) {
     std::cout << e.what() << std::endl;

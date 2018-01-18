@@ -20,8 +20,6 @@
     <remap from="image_in/compressed" to="/image_raw/compressed" />
   </node>
 
- <!-- <node pkg="turtle_bot" type="tracker" name="tracker"/> -->
- 
-  
+ <node pkg="turtle_bot" type="tracker" name="tracker"/>  
   
 </launch>
