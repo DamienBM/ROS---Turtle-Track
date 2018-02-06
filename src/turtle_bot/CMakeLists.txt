@@ -17,6 +17,8 @@ find_package(catkin REQUIRED COMPONENTS
   message_generation
   image_transport
   cv_bridge
+  pcl_conversions 
+  pcl_ros
   )
 
 #added after ROS update to link OpenCV
@@ -24,6 +26,9 @@ find_package(OpenCV 3.3.1 EXACT REQUIRED)
 
 find_package(PkgConfig)
 pkg_check_modules(GAMLLIBSVM gaml-libsvm REQUIRED)
+
+pkg_check_modules(VQ2 vq2 REQUIRED)
+
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -66,6 +71,8 @@ pkg_check_modules(GAMLLIBSVM gaml-libsvm REQUIRED)
    PanTilt.msg
    PanTilts.msg
    Axis.msg
+   Entity.msg
+   Entities.msg
  )
 
 ## Generate services in the 'srv' folder
@@ -157,12 +164,17 @@ ${gaml_INCLUDE_DIRS}
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 add_executable(nav_to_goal src/nav_to_goal.cpp)
-add_executable(nav_points src/nav_points.cpp)
+add_executable(nav_points_sim src/nav_points_sim.cpp)
+add_executable(nav_points_bot src/nav_points_bot.cpp)
 add_executable(move_axis src/move_axis.cpp)
 add_executable(detect src/detect.cpp)
 add_executable(tracker src/tracker.cpp)
 add_executable(sampler src/sampler.cpp)
 add_executable(localize src/localize.cpp)
+add_executable(position_server src/position_server.cpp)
+add_executable(share src/share.cpp)
+add_executable(positions src/positions.cpp)
+add_executable(gngt src/gngt.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -179,8 +191,13 @@ target_link_libraries(nav_to_goal
   ${catkin_LIBRARIES}
   )
 
-target_link_libraries(nav_points
+target_link_libraries(nav_points_sim
   ${catkin_LIBRARIES}
+  )
+
+target_link_libraries(nav_points_bot
+  ${catkin_LIBRARIES}
+  ${OpenCV_LIBRARIES} 
   )
 
 target_link_libraries(move_axis
@@ -196,17 +213,35 @@ target_link_libraries(tracker
   ${catkin_LIBRARIES}
   )
 
-target_link_libraries(sampler
+target_link_libraries(position_server
   ${catkin_LIBRARIES}
   )
 
-
+target_link_libraries(sampler
+  ${catkin_LIBRARIES}
+  )
 
 target_compile_options(localize PUBLIC ${GAMLLIBSVM_CFLAGS_OTHER})
 target_include_directories(localize PUBLIC ${GAMLLIBSVM_INCLUDE_DIRS})
 target_link_libraries(localize
   ${catkin_LIBRARIES} ${GAMLLIBSVM_LIBRARIES}
   )
+
+target_link_libraries(share
+  ${catkin_LIBRARIES}
+  )
+
+target_link_libraries(positions
+  ${catkin_LIBRARIES}
+  )
+
+
+target_link_libraries(gngt ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+set_property         (TARGET gngt APPEND PROPERTY INCLUDE_DIRECTORIES ${VQ2_INCLUDE_DIRS}   )
+set_property         (TARGET gngt APPEND PROPERTY COMPILE_FLAGS       ${VQ2_CFLAGS_OTHER}   )
+set_property         (TARGET gngt APPEND PROPERTY INCLUDE_DIRECTORIES ${catkin_INCLUDE_DIRS})
+set_property         (TARGET gngt APPEND PROPERTY LINK_LIBRARIES      ${VQ2_LIBRARIES}      )
+add_dependencies     (gngt turtle_bot_generate_messages_cpp)
 
   
 #############

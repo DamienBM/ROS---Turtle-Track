@@ -14,14 +14,14 @@
 #include <utility>
 #include <turtle_bot/Axis.h>
 
-int hsv_min_couleur=128;
-int hsv_max_couleur=142;
-int hsv_min_saturation=87;
+int hsv_min_couleur=95;
+int hsv_max_couleur=118;
+int hsv_min_saturation=58;
 int hsv_max_saturation=256;
-int hsv_min_luminosite=147;
+int hsv_min_luminosite=154;
 int hsv_max_luminosite=256;
 turtle_bot::Axis theCurrState;
-turtle_bot::Axis theDesireState;
+//turtle_bot::Axis theDesireState;
 bool isMoving = false;
 
 
@@ -59,8 +59,6 @@ void image_callback(const sensor_msgs::ImageConstPtr& theImage, ros::Publisher &
   
   ROS_INFO("I'm in the callback function");
   
-  //if( !((theFormerState.pan == theCurrState.pan)&&(theFormerState.tilt==theCurrState.tilt)))
-  //  return;
   if (isMoving)
    return;
       
@@ -77,7 +75,6 @@ void image_callback(const sensor_msgs::ImageConstPtr& theImage, ros::Publisher &
   }
   
   const Mat& input  = bridge_input->image;
-
   
   Mat hsvimg;
   Mat detection_img; 
@@ -177,10 +174,10 @@ void image_callback(const sensor_msgs::ImageConstPtr& theImage, ros::Publisher &
 void callback(int a, void*){}
 
 void theStateCallback(const turtle_bot::Axis & theState){
-  if (((theDesireState.pan - theState.pan)*(theDesireState.pan - theState.pan)<100) && ((theDesireState.tilt - theState.tilt)*(theDesireState.tilt - theState.tilt)<100)){
+  /*if (((theDesireState.pan - theState.pan)*(theDesireState.pan - theState.pan)<100) && ((theDesireState.tilt - theState.tilt)*(theDesireState.tilt - theState.tilt)<100)){
     isMoving = false;
     //cv::waitKey(200);
-  }
+    }*/
   theCurrState  = theState;
 }
 

@@ -1,0 +1,8 @@
+prefix=/home/damien/SIR/ros-ws/install
+
+Name: axis_camera
+Description: Description of axis_camera
+Version: 0.2.1
+Cflags: -I/home/damien/SIR/ros-ws/install/include
+Libs: -L/home/damien/SIR/ros-ws/install/lib 
+Requires: 

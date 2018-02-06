@@ -1,0 +1,6 @@
+devel_space: /home/damien/SIR/ros-ws/devel
+install: false
+install_space: /home/damien/SIR/ros-ws/install
+profile: default
+source_space: /home/damien/SIR/ros-ws/src
+workspace: /home/damien/SIR/ros-ws

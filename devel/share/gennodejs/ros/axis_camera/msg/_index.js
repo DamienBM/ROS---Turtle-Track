@@ -1,0 +1,1 @@
+/home/damien/SIR/ros-ws/devel/.private/axis_camera/share/gennodejs/ros/axis_camera/msg/_index.js

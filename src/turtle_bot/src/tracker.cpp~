@@ -12,6 +12,7 @@ turtle_bot::Axis theCurrState;
 turtle_bot::Axis theDesireState;
 turtle_bot::PanTilts g_tbList;
 bool isMoving = false;
+bool camera_available = false;
 std::string chosenMode="search";
 std::vector<std::pair<double, double> > positionsScan{  {-45,-25},
                                                         {0, -25},
@@ -29,42 +30,16 @@ bool mode_callback(turtle_bot::Mode::Request& request, turtle_bot::Mode::Respons
   return true;
 }
 
-
-
 void theModeCallback(turtle_bot::PanTilts tbList){
-  bool equal = true;
-  ROS_INFO_STREAM(""<<tbList.pts.size());
-
-  /*if(tbList.pts.size() == g_tbList.pts.size()){
-    ROS_INFO("rentre dans le for oklm");
-    for(auto ptr = tbList.pts.begin(), g_ptr = g_tbList.pts.begin(); ptr != tbList.pts.end();ptr++,g_ptr++){      
-      if ((ptr->pan != g_ptr->pan)||(ptr->tilt != g_ptr->tilt)){
-	equal = false;
-      }
-    }  
-  
-    if(equal){
-      ROS_INFO("c'est égale");
-      return;
-    }
-  }*/
-
   g_tbList.pts.resize(tbList.pts.size());
   g_tbList.pts.clear();
-  ROS_INFO_STREAM(""<<g_tbList.pts.capacity());
-  //std::copy(tbList.pts.begin(),tbList.pts.end(), g_tbList.pts.begin());
   g_tbList.pts.assign(tbList.pts.begin(),tbList.pts.end());
-  //g_tbList.pts = tbList.pts;
-  ROS_INFO("gtblist affecté");
-  ROS_INFO_STREAM(""<<g_tbList.pts.size());
 }
 
 void modeUpdate(ros::Publisher & pub){
   
-  if (isMoving)
+  if (isMoving && !camera_available)
     return;
-
-
   
   if (chosenMode ==  "search"){
     if (!g_tbList.pts.empty()){
@@ -73,59 +48,57 @@ void modeUpdate(ros::Publisher & pub){
   }
     
   else if (chosenMode == "scan"){
+    camera_available = false; 
     std::pair<double, double> pos = positionsScan[compteur];
     theDesireState.pan = pos.first;
-    theDesireState.tilt = pos.second;
+    theDesireState.tilt = pos.second; 
+    compteur++;
+    compteur%=9;
+
     pub.publish(theDesireState);
-      
-    ++compteur%=8;
+    isMoving = true;
+    ros::Duration(1.5).sleep();
   }
 
   else if (chosenMode == "track"){
-      
+    camera_available = false;
     turtle_bot::Axis thePan(theCurrState);
-    ROS_INFO("mode track activated");
     std::pair<double, double> thePair;
     try{
       double dist = 1000000000000;
-      ROS_INFO_STREAM(""<<g_tbList.pts.size());  // à 0
       for(auto ptr = g_tbList.pts.begin(); ptr != g_tbList.pts.end(); ptr++){
-	ROS_INFO("dans le for");
 	if (dist >= ((ptr->pan - theCurrState.pan)*(ptr->pan - theCurrState.pan)
 		     + (ptr->tilt - theCurrState.tilt)*(ptr->tilt - theCurrState.tilt))){
 	  dist = (ptr->pan - theCurrState.pan)*(ptr->pan - theCurrState.pan)
 	    + (ptr->tilt - theCurrState.tilt)*(ptr->tilt - theCurrState.tilt);
 	  theDesireState.pan  = ptr->pan;
 	  theDesireState.tilt = ptr->tilt;
-	  ROS_INFO("dans le if");
 	}
 	      
       }
     }catch (std::exception& e) {
-      ROS_INFO("catch");
       return;
     }
-        
-    //cv::waitKey(0);
+
+    theDesireState.autofocus = true;
     pub.publish(theDesireState);
     isMoving = true;
-            
+    ros::Duration(1.5).sleep();        
   }
 
   else
     chosenMode = "search";
      
-
-
 }
 
 
 void theStateCallback(const turtle_bot::Axis & theState){
-  if (((theDesireState.pan - theState.pan)*(theDesireState.pan - theState.pan)<100) && ((theDesireState.tilt - theState.tilt)*(theDesireState.tilt - theState.tilt)<100)){
+  camera_available = true;
+  if (((theDesireState.pan - theState.pan)*(theDesireState.pan - theState.pan)<10) && ((theDesireState.tilt - theState.tilt)*(theDesireState.tilt - theState.tilt)<10)){
     isMoving = false;
-    //cv::waitKey(200);
-  }
+  }  
   theCurrState = theState;
+  
 }
 
 int main(int argc, char * argv[]) {
@@ -146,5 +119,4 @@ int main(int argc, char * argv[]) {
       ros::Duration(0.1).sleep();
       ros::spinOnce();
   }
- 
 }

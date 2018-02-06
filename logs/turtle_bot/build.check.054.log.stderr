@@ -1,0 +1,6 @@
+[31m[1mCMake Error[0m at /home/damien/SIR/ros-ws/src/turtle_bot/CMakeLists.txt:195 (target_link_libraries):
+  Cannot specify link libraries for target "nav_points" which is not built by
+  this project.
+
+
+make: *** [cmake_check_build_system] Erreur 1

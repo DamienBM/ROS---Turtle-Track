@@ -1,0 +1,20 @@
+[01m[K/home/damien/SIR/ros-ws/src/turtle_bot/src/localize.cpp:3:10:[m[K [01;31m[Kfatal error: [m[Kturtle_bot/PanTilts.h: Aucun fichier ou dossier de ce type
+ #include [01;31m[K<turtle_bot/PanTilts.h>[m[K
+          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/damien/SIR/ros-ws/src/turtle_bot/src/sampler.cpp:8:10:[m[K [01;31m[Kfatal error: [m[Kturtle_bot/PanTilts.h: Aucun fichier ou dossier de ce type
+ #include [01;31m[K<turtle_bot/PanTilts.h>[m[K
+          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+compilation terminated.
+make[2]: *** [CMakeFiles/sampler.dir/src/sampler.cpp.o] Erreur 1
+make[2]: *** [CMakeFiles/localize.dir/src/localize.cpp.o] Erreur 1
+make[1]: *** [CMakeFiles/sampler.dir/all] Erreur 2
+make[1]: *** Attente des tâches non terminées....
+make[1]: *** [CMakeFiles/localize.dir/all] Erreur 2
+[01m[K/home/damien/SIR/ros-ws/src/turtle_bot/src/positions.cpp:18:10:[m[K [01;31m[Kfatal error: [m[Kturtle_bot/ArenaPosition.h: Aucun fichier ou dossier de ce type
+ #include [01;31m[K<turtle_bot/ArenaPosition.h>[m[K
+          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+make[2]: *** [CMakeFiles/positions.dir/src/positions.cpp.o] Erreur 1
+make[1]: *** [CMakeFiles/positions.dir/all] Erreur 2
+make: *** [all] Erreur 2

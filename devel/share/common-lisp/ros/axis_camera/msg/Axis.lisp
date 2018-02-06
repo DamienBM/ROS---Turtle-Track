@@ -1,0 +1,1 @@
+/home/damien/SIR/ros-ws/devel/.private/axis_camera/share/common-lisp/ros/axis_camera/msg/Axis.lisp

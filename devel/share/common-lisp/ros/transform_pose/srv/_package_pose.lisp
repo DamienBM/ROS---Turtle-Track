@@ -1,0 +1,1 @@
+/home/damien/SIR/ros-ws/devel/.private/transform_pose/share/common-lisp/ros/transform_pose/srv/_package_pose.lisp

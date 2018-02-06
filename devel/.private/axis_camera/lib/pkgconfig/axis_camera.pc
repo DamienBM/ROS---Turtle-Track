@@ -1,0 +1,8 @@
+prefix=/home/damien/SIR/ros-ws/devel/.private/axis_camera
+
+Name: axis_camera
+Description: Description of axis_camera
+Version: 0.2.1
+Cflags: -I/home/damien/SIR/ros-ws/devel/.private/axis_camera/include
+Libs: -L/home/damien/SIR/ros-ws/devel/.private/axis_camera/lib 
+Requires: 

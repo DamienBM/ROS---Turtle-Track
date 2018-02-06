@@ -1,0 +1,7 @@
+[01m[K/home/damien/SIR/ros-ws/src/transform_pose/src/transform_pose2D.cpp:6:10:[m[K [01;31m[Kfatal error: [m[Ktransform_pose/pose.h: Aucun fichier ou dossier de ce type
+ #include [01;31m[K<transform_pose/pose.h>[m[K
+          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+make[2]: *** [CMakeFiles/transform_pose_node.dir/src/transform_pose2D.cpp.o] Erreur 1
+make[1]: *** [CMakeFiles/transform_pose_node.dir/all] Erreur 2
+make: *** [all] Erreur 2

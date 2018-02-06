@@ -1,0 +1,8 @@
+[35m[1mScanning dependencies of target input[0m
+[35m[1mScanning dependencies of target gngt[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/gngt.dir/src/gngt.cpp.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/input.dir/src/input.cpp.o[0m
+[ 75%] [32m[1mLinking CXX executable /home/damien/SIR/ros-ws/devel/.private/gngt_demo/lib/gngt_demo/input[0m
+[100%] [32m[1mLinking CXX executable /home/damien/SIR/ros-ws/devel/.private/gngt_demo/lib/gngt_demo/gngt[0m
+[100%] Built target input
+[100%] Built target gngt

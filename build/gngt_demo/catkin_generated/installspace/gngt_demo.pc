@@ -1,0 +1,8 @@
+prefix=/home/damien/SIR/ros-ws/install
+
+Name: gngt_demo
+Description: Description of gngt_demo
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/damien/SIR/ros-ws/install/lib 
+Requires: roscpp rospy std_msgs

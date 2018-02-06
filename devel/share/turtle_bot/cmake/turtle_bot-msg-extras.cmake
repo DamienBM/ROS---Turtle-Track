@@ -1,0 +1,1 @@
+/home/damien/SIR/ros-ws/devel/.private/turtle_bot/share/turtle_bot/cmake/turtle_bot-msg-extras.cmake

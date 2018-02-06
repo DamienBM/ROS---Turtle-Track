@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/damien/SIR/ros-ws/devel/.private/test_opencv/setup.sh

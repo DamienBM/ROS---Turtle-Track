@@ -1,0 +1,16 @@
+[35m[1mScanning dependencies of target transform_pose_node[0m
+[  0%] Built target geometry_msgs_generate_messages_py
+[  0%] Built target geometry_msgs_generate_messages_nodejs
+[  0%] Built target _transform_pose_generate_messages_check_deps_pose
+[  0%] Built target geometry_msgs_generate_messages_lisp
+[  0%] Built target geometry_msgs_generate_messages_eus
+[ 11%] [32mBuilding CXX object CMakeFiles/transform_pose_node.dir/src/transform_pose2D.cpp.o[0m
+[ 11%] Built target geometry_msgs_generate_messages_cpp
+[ 33%] Built target transform_pose_generate_messages_py
+[ 44%] Built target transform_pose_generate_messages_nodejs
+[ 55%] Built target transform_pose_generate_messages_lisp
+[ 77%] Built target transform_pose_generate_messages_eus
+[ 88%] Built target transform_pose_generate_messages_cpp
+[ 88%] Built target transform_pose_generate_messages
+[100%] [32m[1mLinking CXX executable /home/damien/SIR/ros-ws/devel/.private/transform_pose/lib/transform_pose/transform_pose_node[0m
+[100%] Built target transform_pose_node

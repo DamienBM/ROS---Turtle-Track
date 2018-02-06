@@ -1,0 +1,8 @@
+prefix=/home/damien/SIR/ros-ws/install
+
+Name: be_robot
+Description: Description of be_robot
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/damien/SIR/ros-ws/install/lib 
+Requires: 

@@ -1,0 +1,33 @@
+Warning: Cannot symlink from /home/damien/SIR/ros-ws/devel/.private/turtle_bot/include/turtle_bot/Axis.h to existing file /home/damien/SIR/ros-ws/devel/include/turtle_bot/Axis.h
+Warning: Source hash: 6d0b2769d8e470ad30b1b517e0862e76
+Warning: Dest hash: 8093d6aa3f3b9b225f2aec2086e71f6e
+Warning: Cannot symlink from /home/damien/SIR/ros-ws/devel/.private/turtle_bot/include/turtle_bot/GoRequest.h to existing file /home/damien/SIR/ros-ws/devel/include/turtle_bot/GoRequest.h
+Warning: Source hash: 8d24ce28a3024d5d3598a8e0d1d00c14
+Warning: Dest hash: 4282a66c1f122cf61c66113d838543f0
+Warning: Cannot symlink from /home/damien/SIR/ros-ws/devel/.private/turtle_bot/include/turtle_bot/Service1Response.h to existing file /home/damien/SIR/ros-ws/devel/include/turtle_bot/Service1Response.h
+Warning: Source hash: 87b6437174a6b84170dcb8b67f263560
+Warning: Dest hash: c1b013cb94d27785bc613a061e983218
+Warning: Cannot symlink from /home/damien/SIR/ros-ws/devel/.private/turtle_bot/include/turtle_bot/Service1Request.h to existing file /home/damien/SIR/ros-ws/devel/include/turtle_bot/Service1Request.h
+Warning: Source hash: 6aaba4186d425ac35af96023010d2bce
+Warning: Dest hash: 8fcabec3764189c8390db9ca91b5c7c5
+Warning: Cannot symlink from /home/damien/SIR/ros-ws/devel/.private/turtle_bot/include/turtle_bot/ArenaPositions.h to existing file /home/damien/SIR/ros-ws/devel/include/turtle_bot/ArenaPositions.h
+Warning: Source hash: dec93fcebcf46259bb85650783d1a732
+Warning: Dest hash: 94e926133167950f43ab7ed4dfff7179
+Warning: Cannot symlink from /home/damien/SIR/ros-ws/devel/.private/turtle_bot/include/turtle_bot/PanTilt.h to existing file /home/damien/SIR/ros-ws/devel/include/turtle_bot/PanTilt.h
+Warning: Source hash: af5039d90d41f9bb69cab0e64bc1ebfd
+Warning: Dest hash: 3829cebe5b794ff5d5650496dbe4c775
+Warning: Cannot symlink from /home/damien/SIR/ros-ws/devel/.private/turtle_bot/include/turtle_bot/GoResponse.h to existing file /home/damien/SIR/ros-ws/devel/include/turtle_bot/GoResponse.h
+Warning: Source hash: 3537eff9c0bb4df01380dac9390ea581
+Warning: Dest hash: c5340bcd1d3a923cee4762e2614a2ab0
+Warning: Cannot symlink from /home/damien/SIR/ros-ws/devel/.private/turtle_bot/include/turtle_bot/AbortRequest.h to existing file /home/damien/SIR/ros-ws/devel/include/turtle_bot/AbortRequest.h
+Warning: Source hash: 9965e8742c53bb1c8dde09fff1f59eca
+Warning: Dest hash: cad4e786db611c01a57f17c9106d5f15
+Warning: Cannot symlink from /home/damien/SIR/ros-ws/devel/.private/turtle_bot/include/turtle_bot/PanTilts.h to existing file /home/damien/SIR/ros-ws/devel/include/turtle_bot/PanTilts.h
+Warning: Source hash: 56779ccaf85514439de1af8905d00660
+Warning: Dest hash: f6c9be3e846356213ac521708abd1a30
+Warning: Cannot symlink from /home/damien/SIR/ros-ws/devel/.private/turtle_bot/include/turtle_bot/AbortResponse.h to existing file /home/damien/SIR/ros-ws/devel/include/turtle_bot/AbortResponse.h
+Warning: Source hash: ef270fe47cf724d560cb66d2ef123b40
+Warning: Dest hash: defb363fba499c5f860e14c000ce4b8a
+Warning: Cannot symlink from /home/damien/SIR/ros-ws/devel/.private/turtle_bot/include/turtle_bot/ArenaPosition.h to existing file /home/damien/SIR/ros-ws/devel/include/turtle_bot/ArenaPosition.h
+Warning: Source hash: baf8afe4b80654ee37d09c48907a3367
+Warning: Dest hash: 1708debe48e8be011293f3ba93422b5e

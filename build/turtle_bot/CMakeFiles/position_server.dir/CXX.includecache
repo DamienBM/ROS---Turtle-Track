@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/damien/SIR/ros-ws/src/turtle_bot/src/position_server.cpp
+string
+-
+iostream
+-
+cstdlib
+-
+map
+-
+utility
+-
+chrono
+-
+thread
+-
+mutex
+-
+memory
+-
+boost/asio.hpp
+-
+

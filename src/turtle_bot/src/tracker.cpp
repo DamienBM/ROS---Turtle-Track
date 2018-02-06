@@ -57,6 +57,7 @@ void modeUpdate(ros::Publisher & pub){
 
     pub.publish(theDesireState);
     isMoving = true;
+    ros::Duration(1).sleep();
   }
 
   else if (chosenMode == "track"){
@@ -82,7 +83,7 @@ void modeUpdate(ros::Publisher & pub){
     theDesireState.autofocus = true;
     pub.publish(theDesireState);
     isMoving = true;
-            
+    ros::Duration(1).sleep();        
   }
 
   else
@@ -97,6 +98,7 @@ void theStateCallback(const turtle_bot::Axis & theState){
     isMoving = false;
   }  
   theCurrState = theState;
+  
 }
 
 int main(int argc, char * argv[]) {

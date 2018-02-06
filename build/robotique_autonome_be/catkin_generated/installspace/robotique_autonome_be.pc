@@ -1,0 +1,8 @@
+prefix=/home/damien/SIR/ros-ws/install
+
+Name: robotique_autonome_be
+Description: Description of robotique_autonome_be
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/damien/SIR/ros-ws/install/lib 
+Requires: 

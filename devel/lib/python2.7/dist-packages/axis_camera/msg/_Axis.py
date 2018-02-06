@@ -1,0 +1,1 @@
+/home/damien/SIR/ros-ws/devel/.private/axis_camera/lib/python2.7/dist-packages/axis_camera/msg/_Axis.py

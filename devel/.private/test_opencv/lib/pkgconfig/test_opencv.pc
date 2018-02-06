@@ -1,0 +1,8 @@
+prefix=/home/damien/SIR/ros-ws/devel/.private/test_opencv
+
+Name: test_opencv
+Description: Description of test_opencv
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/damien/SIR/ros-ws/devel/.private/test_opencv/lib 
+Requires: roscpp std_msgs image_transport cv_bridge

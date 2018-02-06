@@ -1,0 +1,2 @@
+uint16 label
+ArenaPosition pose

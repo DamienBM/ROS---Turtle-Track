@@ -1,0 +1,34 @@
+=> Pour simu turtle_sim :
+1.lancer turtlesim_nav.launch (lance la simu avec rviz et déplace la tortue aux points donnés dans "src/txt/poses.txt" avec le format x(en m) y(en m) theta(en radian))
+2.Appeler service /go_bot par rosservice call /go_bot ...
+OU
+2.bis.Arreter le noeud à n'importe quel moment par rosservice call /abort_bot ...
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+=> Pour déplacement robot :
+1.lancer turtlebot_nav.launch
+2.sur le pc du robot :
+      - lancer terminal
+      - export ROS_MASTER_URI=http://calculxx.smart.metz.supelec.fr:11311
+      - sur le même terminal : roslaunch turtlebot_bringup minimal.launch
+3.Appeler service /go_bot par rosservice call /go_bot ...
+OU
+3.bis.Arreter le noeud à n'importe quel moment par rosservice call /abort_bot ...
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+=> Pour lancer GNGT (tout le process vision):
+1.lancer gngt.launch
+2.régler les trackbars de Windows(pour detect) et Params GNGT(pour l'algo GNGT)
+3.Visualisez sous RVIZ le GNGT
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+=> Pour tout lancer (GNGT + turtle_bot):
+1.lancer all.launch
+2.sur le pc du robot :
+      - lancer terminal
+      - export ROS_MASTER_URI=http://calculxx.smart.metz.supelec.fr:11311
+      - sur le même terminal : roslaunch turtlebot_bringup minimal.launch
+

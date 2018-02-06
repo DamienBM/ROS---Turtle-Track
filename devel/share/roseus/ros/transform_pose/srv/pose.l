@@ -1,0 +1,1 @@
+/home/damien/SIR/ros-ws/devel/.private/transform_pose/share/roseus/ros/transform_pose/srv/pose.l

@@ -43,7 +43,6 @@ void callback(const turtle_bot::PanTilts::ConstPtr& panTiltList,
     nodes[1].index = 2;
     nodes[1].value = (panTiltList->pts[i].tilt + 90) / 45 - 1;
     nodes[2].index = -1;        // end
-    auto a = gX.predict(nodes);
     tab.aps[i].x = gX.predict(nodes);
     tab.aps[i].y = gY.predict(nodes);
         

@@ -1,0 +1,6 @@
+set(axis_camera_SETUP_PY_VERSION "0.2.1")
+set(axis_camera_SETUP_PY_SCRIPTS "")
+set(axis_camera_SETUP_PY_PACKAGES "")
+set(axis_camera_SETUP_PY_PACKAGE_DIRS "")
+set(axis_camera_SETUP_PY_MODULES "")
+set(axis_camera_SETUP_PY_MODULE_DIRS "")

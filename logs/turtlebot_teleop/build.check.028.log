@@ -1,0 +1,45 @@
+[36m--[0m Using CATKIN_DEVEL_PREFIX: /home/damien/SIR/ros-ws/devel/.private/turtlebot_teleop
+[36m--[0m Using CMAKE_PREFIX_PATH: /home/damien/SIR/ros-ws/devel;/opt/ros/kinetic
+[36m--[0m This workspace overlays: /home/damien/SIR/ros-ws/devel;/opt/ros/kinetic
+[36m--[0m Using PYTHON_EXECUTABLE: /usr/bin/python
+[36m--[0m Using Debian Python package layout
+[36m--[0m Using empy: /usr/bin/empy
+[36m--[0m Using CATKIN_ENABLE_TESTING: ON
+[36m--[0m Call enable_testing()
+[36m--[0m Using CATKIN_TEST_RESULTS_DIR: /home/damien/SIR/ros-ws/build/turtlebot_teleop/test_results
+[36m--[0m Found gtest sources under '/usr/src/gtest': gtests will be built
+[36m--[0m Using Python nosetests: /usr/bin/nosetests-2.7
+[36m--[0m catkin 0.7.8
+[33m[1mCMake Warning[0m at /opt/ros/kinetic/share/catkin/cmake/catkinConfig.cmake:76 (find_package):
+  Could not find a package configuration file provided by "joy" with any of
+  the following names:
+
+    joyConfig.cmake
+    joy-config.cmake
+
+  Add the installation prefix of "joy" to CMAKE_PREFIX_PATH or set "joy_DIR"
+  to a directory containing one of the above files.  If "joy" provides a
+  separate development package or SDK, be sure it has been installed.
+[36mCall Stack (most recent call first):[0m
+  CMakeLists.txt:5 (find_package)
+
+
+[31m[1mCMake Error[0m at /opt/ros/kinetic/share/catkin/cmake/catkinConfig.cmake:83 (find_package):
+  Could not find a package configuration file provided by "joy" with any of
+  the following names:
+
+    joyConfig.cmake
+    joy-config.cmake
+
+  Add the installation prefix of "joy" to CMAKE_PREFIX_PATH or set "joy_DIR"
+  to a directory containing one of the above files.  If "joy" provides a
+  separate development package or SDK, be sure it has been installed.
+[36mCall Stack (most recent call first):[0m
+  CMakeLists.txt:5 (find_package)
+
+
+[36m--[0m Could not find the required component 'joy'. The following CMake error indicates that you either need to install the package with the same name or change your environment so that it can be found.
+[36m--[0m Configuring incomplete, errors occurred!
+See also "/home/damien/SIR/ros-ws/build/turtlebot_teleop/CMakeFiles/CMakeOutput.log".
+See also "/home/damien/SIR/ros-ws/build/turtlebot_teleop/CMakeFiles/CMakeError.log".
+make: *** [cmake_check_build_system] Erreur 1

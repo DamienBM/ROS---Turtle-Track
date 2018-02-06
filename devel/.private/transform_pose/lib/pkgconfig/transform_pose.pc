@@ -1,0 +1,8 @@
+prefix=/home/damien/SIR/ros-ws/devel/.private/transform_pose
+
+Name: transform_pose
+Description: Description of transform_pose
+Version: 0.0.0
+Cflags: -I/home/damien/SIR/ros-ws/devel/.private/transform_pose/include
+Libs: -L/home/damien/SIR/ros-ws/devel/.private/transform_pose/lib 
+Requires: 

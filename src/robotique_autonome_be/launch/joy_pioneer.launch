@@ -1,7 +1,0 @@
-<launch>
-  <node pkg="joy" type="joy_node" name="joy">
-    <param name="autorepeat_rate" value="10.0" />	
-  </node>
-  <node pkg="robotique_autonome_be" type="joy_to_twist.py" name="joy_to_twist"/>
-  <node pkg="robotique_autonome_be" type="pioneer_driver.py" name="driver"/>
-</launch>

@@ -1,0 +1,6 @@
+->dans cmake ajouter find package(PkgConfig) + pkg_check_modules(GAMLLIBSVM gaml-libsvm REQUIRED)
+-> dans terminal faire pkgconfig --libs --cflags gaml-libsvm => résultat flag et var de linkage
+-> dans CMAKE : target_link_libraries(localize
+   	      	...
+		$(GAMLLIBSVM_...)
+		target_compile_option(...)

@@ -1,0 +1,1 @@
+/home/damien/SIR/ros-ws/devel/.private/test_opencv/share/test_opencv/cmake/test_opencvConfig.cmake

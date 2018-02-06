@@ -1,0 +1,1 @@
+/home/damien/SIR/ros-ws/devel/.private/robotique_autonome_be/lib/pkgconfig/robotique_autonome_be.pc

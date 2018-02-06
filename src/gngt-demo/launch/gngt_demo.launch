@@ -1,0 +1,6 @@
+<launch>
+  <group ns="gngt">
+    <node pkg="gngt_demo" name="input" type="input"/>
+    <node pkg="gngt_demo" name="gngt"  type="gngt"/>
+  </group>
+</launch>

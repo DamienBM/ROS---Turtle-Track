@@ -95,9 +95,9 @@ int main(int argc, char* argv[]) {
     while (std::getline(fileIn, line)){
 	char* temp;
 	temp =  strtok((char*)line.c_str()," ");
-	panTiltTemp.first = std::stof(temp);
+	panTiltTemp.first = ((std::stof(temp)+180)/180)-1;
 	temp =  strtok(NULL," ");
-	panTiltTemp.second = std::stof(temp);
+	panTiltTemp.second = ((std::stof(temp)+90)/45)-1;
 	temp =  strtok(NULL," ");
 	x = std::stof(temp);
 	temp =  strtok(NULL," ");
@@ -112,6 +112,11 @@ int main(int argc, char* argv[]) {
 	basisY.push_back(dataTempY);
     }
 
+    // we resize the data
+
+    
+
+    
     // Let us set configure a svm
 
     struct svm_parameter params;
@@ -132,8 +137,8 @@ int main(int argc, char* argv[]) {
     auto fY = learner(basisY.begin(),basisY.end(),input_of,output_of);
 
     // Let us plot the result.
-    gnuplot("prediction.plot","SVM prediction",fX);
-    gnuplot("prediction.plot","SVM prediction",fY);
+    gnuplot("predictionX.plot","SVM prediction",fX);
+    gnuplot("predictionY.plot","SVM prediction",fY);
 
     // All libsvm functions related to svm models are implemented.
     std::cout << std::endl

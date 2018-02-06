@@ -1,0 +1,8 @@
+<launch>
+  
+  <node pkg="turtle_tf" type="turtle_tf_broadcaster" name="tfnode" args="turtle1"/>
+  <node pkg="rviz" type="rviz" name="viz"/>
+  
+  <node pkg="turtle_bot" type="nav_points_bot" name="nav_points_bot" args="poses.txt" output="screen"/>
+  
+</launch>

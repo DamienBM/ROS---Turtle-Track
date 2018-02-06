@@ -53,7 +53,6 @@ int main(int argc,char* argv[]) {
       std::this_thread::sleep_for(pause_duration);
     }
     std::cout << std::endl;
-
     
     std::cout << "Every 500ms I read the points, until the server is empty" << std::endl;
     std::vector<Point> points;

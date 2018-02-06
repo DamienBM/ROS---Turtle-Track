@@ -1,0 +1,14 @@
+[01m[K/home/damien/SIR/ros-ws/src/turtle_bot/src/tracker.cpp:2:10:[m[K [01;31m[Kfatal error: [m[Kturtle_bot/PanTilts.h: Aucun fichier ou dossier de ce type
+ #include [01;31m[K<turtle_bot/PanTilts.h>[m[K
+          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+make[2]: *** [CMakeFiles/tracker.dir/src/tracker.cpp.o] Erreur 1
+make[1]: *** [CMakeFiles/tracker.dir/all] Erreur 2
+make[1]: *** Attente des tâches non terminées....
+[01m[K/home/damien/SIR/ros-ws/src/turtle_bot/src/detect.cpp:7:10:[m[K [01;31m[Kfatal error: [m[Kturtle_bot/PanTilts.h: Aucun fichier ou dossier de ce type
+ #include [01;31m[K<turtle_bot/PanTilts.h>[m[K
+          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+make[2]: *** [CMakeFiles/detect.dir/src/detect.cpp.o] Erreur 1
+make[1]: *** [CMakeFiles/detect.dir/all] Erreur 2
+make: *** [all] Erreur 2

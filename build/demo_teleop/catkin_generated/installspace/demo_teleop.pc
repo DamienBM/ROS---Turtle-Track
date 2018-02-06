@@ -1,0 +1,8 @@
+prefix=/home/damien/SIR/ros-ws/install
+
+Name: demo_teleop
+Description: Description of demo_teleop
+Version: 0.0.0
+Cflags: -I/home/damien/SIR/ros-ws/install/include
+Libs: -L/home/damien/SIR/ros-ws/install/lib 
+Requires: 

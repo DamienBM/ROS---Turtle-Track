@@ -1,0 +1,2 @@
+=>Pour simu turtle_sim :
+    - lancer turtlesim_nav.launch (lance la simu avec rviz et déplace la tortue au points donnés dans "src/txt/poses.txt" 

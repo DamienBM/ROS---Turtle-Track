@@ -1,0 +1,72 @@
+[01m[K/home/damien/SIR/ros-ws/src/turtle_bot/src/detect.cpp:7:10:[m[K [01;31m[Kfatal error: [m[Kturtle_bot/PanTilts.h: Aucun fichier ou dossier de ce type
+ #include [01;31m[K<turtle_bot/PanTilts.h>[m[K
+          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+make[2]: *** [CMakeFiles/detect.dir/src/detect.cpp.o] Erreur 1
+make[1]: *** [CMakeFiles/detect.dir/all] Erreur 2
+make[1]: *** Attente des tâches non terminées....
+[01m[K/home/damien/SIR/ros-ws/src/turtle_bot/src/nav_to_goal.cpp:6:10:[m[K [01;31m[Kfatal error: [m[Kturtle_bot/Service1.h: Aucun fichier ou dossier de ce type
+ #include [01;31m[K<turtle_bot/Service1.h>[m[K
+          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+make[2]: *** [CMakeFiles/nav_to_goal.dir/src/nav_to_goal.cpp.o] Erreur 1
+make[1]: *** [CMakeFiles/nav_to_goal.dir/all] Erreur 2
+[01m[K/home/damien/SIR/ros-ws/src/turtle_bot/src/nav_points.cpp:7:10:[m[K [01;31m[Kfatal error: [m[Kturtle_bot/Service1.h: Aucun fichier ou dossier de ce type
+ #include [01;31m[K<turtle_bot/Service1.h>[m[K
+          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+make[2]: *** [CMakeFiles/nav_points.dir/src/nav_points.cpp.o] Erreur 1
+make[1]: *** [CMakeFiles/nav_points.dir/all] Erreur 2
+[01m[K/home/damien/SIR/ros-ws/src/turtle_bot/src/move_axis.cpp:[m[K In function ‘[01m[Kvoid change_pos(ros::Publisher&, float, float)[m[K’:
+[01m[K/home/damien/SIR/ros-ws/src/turtle_bot/src/move_axis.cpp:5:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kturtle_bot[m[K’ has not been declared
+   [01;31m[Kturtle_bot[m[K::Axis pos;
+   [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/damien/SIR/ros-ws/src/turtle_bot/src/move_axis.cpp:6:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kpos[m[K’ was not declared in this scope
+   [01;31m[Kpos[m[K.pan = hpos;
+   [01;31m[K^~~[m[K
+[01m[K/home/damien/SIR/ros-ws/src/turtle_bot/src/move_axis.cpp:6:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Khpos[m[K’
+   [01;36m[Kpos[m[K.pan = hpos;
+   [01;36m[K^~~[m[K
+   [32m[Khpos[m[K
+[01m[K/home/damien/SIR/ros-ws/src/turtle_bot/src/move_axis.cpp:[m[K In function ‘[01m[Kvoid change_zoom(ros::Publisher&, float)[m[K’:
+[01m[K/home/damien/SIR/ros-ws/src/turtle_bot/src/move_axis.cpp:22:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kturtle_bot[m[K’ has not been declared
+   [01;31m[Kturtle_bot[m[K::Axis pos;
+   [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/damien/SIR/ros-ws/src/turtle_bot/src/move_axis.cpp:23:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kpos[m[K’ was not declared in this scope
+   [01;31m[Kpos[m[K.pan = 0;
+   [01;31m[K^~~[m[K
+[01m[K/home/damien/SIR/ros-ws/src/turtle_bot/src/move_axis.cpp:23:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kpow[m[K’
+   [01;36m[Kpos[m[K.pan = 0;
+   [01;36m[K^~~[m[K
+   [32m[Kpow[m[K
+[01m[K/home/damien/SIR/ros-ws/src/turtle_bot/src/move_axis.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[01m[K/home/damien/SIR/ros-ws/src/turtle_bot/src/move_axis.cpp:42:37:[m[K [01;31m[Kerror: [m[K‘[01m[Kturtle_bot[m[K’ was not declared in this scope
+   ros::Publisher pub = nh.advertise<[01;31m[Kturtle_bot[m[K::Axis>("/cmd", 1);
+                                     [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/damien/SIR/ros-ws/src/turtle_bot/src/move_axis.cpp:42:27:[m[K [01;31m[Kerror: [m[Kparse error in template argument list
+   ros::Publisher pub = nh.[01;31m[Kadvertise<turtle_bot::Axis>[m[K("/cmd", 1);
+                           [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/damien/SIR/ros-ws/src/turtle_bot/src/move_axis.cpp:42:64:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kros::NodeHandle::advertise<<expression error> >(const char [5], int)[m[K’
+   ros::Publisher pub = nh.advertise<turtle_bot::Axis>("/cmd", 1[01;31m[K)[m[K;
+                                                                [01;31m[K^[m[K
+In file included from [01m[K/opt/ros/kinetic/include/ros/ros.h:45:0[m[K,
+                 from [01m[K/home/damien/SIR/ros-ws/src/turtle_bot/src/move_axis.cpp:1[m[K:
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:249:15:[m[K [01;36m[Knote: [m[Kcandidate: template<class M> ros::Publisher ros::NodeHandle::advertise(const string&, uint32_t, bool)
+     Publisher [01;36m[Kadvertise[m[K(const std::string& topic, uint32_t queue_size, bool latch = false)
+               [01;36m[K^~~~~~~~~[m[K
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:249:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/damien/SIR/ros-ws/src/turtle_bot/src/move_axis.cpp:42:64:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+   ros::Publisher pub = nh.advertise<turtle_bot::Axis>("/cmd", 1[01;31m[K)[m[K;
+                                                                [01;31m[K^[m[K
+In file included from [01m[K/opt/ros/kinetic/include/ros/ros.h:45:0[m[K,
+                 from [01m[K/home/damien/SIR/ros-ws/src/turtle_bot/src/move_axis.cpp:1[m[K:
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:315:13:[m[K [01;36m[Knote: [m[Kcandidate: template<class M> ros::Publisher ros::NodeHandle::advertise(const string&, uint32_t, const SubscriberStatusCallback&, const SubscriberStatusCallback&, const VoidConstPtr&, bool)
+   Publisher [01;36m[Kadvertise[m[K(const std::string& topic, uint32_t queue_size,
+             [01;36m[K^~~~~~~~~[m[K
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:315:13:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/damien/SIR/ros-ws/src/turtle_bot/src/move_axis.cpp:42:64:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+   ros::Publisher pub = nh.advertise<turtle_bot::Axis>("/cmd", 1[01;31m[K)[m[K;
+                                                                [01;31m[K^[m[K
+make[2]: *** [CMakeFiles/move_axis.dir/src/move_axis.cpp.o] Erreur 1
+make[1]: *** [CMakeFiles/move_axis.dir/all] Erreur 2
+make: *** [all] Erreur 2

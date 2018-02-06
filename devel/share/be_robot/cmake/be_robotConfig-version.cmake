@@ -1,0 +1,1 @@
+/home/damien/SIR/ros-ws/devel/.private/be_robot/share/be_robot/cmake/be_robotConfig-version.cmake
